@@ -46,18 +46,30 @@ public class MyBot extends TelegramLongPollingBot {
             } else if (message_text.equals("btc")) {
                 sendPicture(chat_id, "bitcoin.png");
                 sendPrice(chat_id, message_text);
+            } else if (message_text.contains("btc")) {
+	        var number = message_text.replaceFirst("btc ", "");
+                var amount = Long.parseLong(number);
+                sendAmount(chat_id, amount, "BTC");
             } else if (message_text.equals("eth")) {
                 sendPicture(chat_id, "eth.jpg");
                 sendPrice(chat_id, message_text);
+            } else if (message_text.contains("eth")) {
+                var number = message_text.replaceFirst("eth ", "");
+                var amount = Long.parseLong(number);
+                sendAmount(chat_id, amount, "ETH");
             } else if (message_text.equals("doge")) {
                 sendPicture(chat_id, "doge.jpg");
                 sendPrice(chat_id, "DOGE");
+            } else if (message_text.contains("doge")) {
+                var number = message_text.replaceFirst("doge ", "");
+                var amount = Long.parseLong(number);
+                sendAmount(chat_id, amount, "DOGE");
             } else if (message_text.equals("/all")) {
                 sendPrice(chat_id, "BTC");
                 sendPrice(chat_id, "ETH");
                 sendPrice(chat_id, "DOGE");
-            } else if (Long.parseLong(message_text) > 0) {
-                var amount = Long.parseLong(message_text);
+            } else if (Long.getLong(message_text) > 0) {
+                var amount = Long.getLong(message_text);
                 sendAmount(chat_id, amount,"BTC");
                 sendAmount(chat_id, amount,"ETH");
                 sendAmount(chat_id, amount,"DOGE");
