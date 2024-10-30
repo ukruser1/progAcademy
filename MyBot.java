@@ -68,8 +68,8 @@ public class MyBot extends TelegramLongPollingBot {
                 sendPrice(chat_id, "BTC");
                 sendPrice(chat_id, "ETH");
                 sendPrice(chat_id, "DOGE");
-            } else if (Long.getLong(message_text) > 0) {
-                var amount = Long.getLong(message_text);
+            } else if (Long.parseLong(message_text) > 0) {
+                var amount = Long.parseLong(message_text);
                 sendAmount(chat_id, amount,"BTC");
                 sendAmount(chat_id, amount,"ETH");
                 sendAmount(chat_id, amount,"DOGE");
