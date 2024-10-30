@@ -30,6 +30,15 @@ public class MyBot extends TelegramLongPollingBot {
             } else if (text.equals("doge")) {
                 CryptoPrice price = CryptoPrice.spotPrice("DOGE");
                 message.setText("DOGE price: " + price.getAmount().doubleValue());
+            } else if (text.equals("/all")) {
+                CryptoPrice price = CryptoPrice.spotPrice("BTC");
+                message.setText("BTC price: " + price.getAmount().doubleValue());
+                execute(message);
+                price = CryptoPrice.spotPrice("ETH");
+                message.setText("ETH price: " + price.getAmount().doubleValue());
+                execute(message);
+                price = CryptoPrice.spotPrice("DOGE");
+                message.setText("DOGE price: " + price.getAmount().doubleValue());
             } else {
                 message.setText("Unknown command!");
             }
