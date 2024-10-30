@@ -1,24 +1,11 @@
 package org.example;
 
-import java.util.Scanner;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Please enter how much fuel does your car consume.");
-
-        var scanner = new Scanner(System.in);
-        var fuelConsumption = scanner.nextDouble();
-
-        while(true) {
-            System.out.println("Please enter how many kilometers did your car ride.");
-            var distance = scanner.nextDouble();
-
-            if(distance == 0)
-            {
-                break;
-            }
-            var result = distance/100*fuelConsumption;
-            System.out.println("Your car consumed: " + result);
-        }
+    public static void main(String[] args) throws Exception {
+        var api = new TelegramBotsApi(DefaultBotSession.class);
+        api.registerBot(new MyBot());
     }
 }
